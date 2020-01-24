@@ -1,44 +1,75 @@
 package cn.blockmc.Zao_hon.form.form;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import cn.blockmc.Zao_hon.FormMenu;
 import cn.blockmc.Zao_hon.form.element.IButton;
+import cn.blockmc.Zao_hon.form.event.ButtonListener;
+import cn.blockmc.Zao_hon.form.event.IFormResponseEvent;
+import cn.nukkit.level.Level;
 
 public class WorldTPForm extends IFormWindow {
+	@SuppressWarnings("serial")
+	public Map<String, String> world = new HashMap<String, String>() {
+		{
+			this.put("skycity", "空岛主城");
+			this.put("skyisland", "空岛居民区");
+			this.put("pve", "pve");
+			this.put("rpg1", "rpg1");
+			this.put("zc", "zc");
+			this.put("zhucheng", "zhucheng");
+			this.put("rpg", "rpg1");
+			this.put("建筑模板区", "建筑模板区");
+		}
+	};
+
 	public WorldTPForm() {
 		super("世界传送菜单", "");
 
-		if (!FormMenu.getInstance().getServer().isLevelLoaded("skycity"))
-			FormMenu.getInstance().getServer().loadLevel("skycity");
-		if (!FormMenu.getInstance().getServer().isLevelLoaded("skyisland"))
-			FormMenu.getInstance().getServer().loadLevel("skyisland");
-		if (!FormMenu.getInstance().getServer().isLevelLoaded("pve"))
-			FormMenu.getInstance().getServer().loadLevel("pve");
-		if (!FormMenu.getInstance().getServer().isLevelLoaded("rpg1"))
-			FormMenu.getInstance().getServer().loadLevel("rpg1");
-		if (!FormMenu.getInstance().getServer().isLevelLoaded("zc"))
-			FormMenu.getInstance().getServer().loadLevel("zc");
-		if (!FormMenu.getInstance().getServer().isLevelLoaded("zhucheng"))
-			FormMenu.getInstance().getServer().loadLevel("zhucheng");
+		world.entrySet().forEach(entry -> {
+			if (!FormMenu.getInstance().getServer().isLevelLoaded(entry.getKey()))
+				FormMenu.getInstance().getServer().loadLevel(entry.getKey());
+			IButton button = new IButton(entry.getValue());
+			button.setListener(
+					new WorldTPButtonListener(FormMenu.getInstance().getServer().getLevelByName(entry.getKey())));
+			this.addButton(button);
+		});
+//
+//		IButton skycity = new IButton("空岛主城", e -> e.getPlayer()
+//				.teleport(FormMenu.getInstance().getServer().getLevelByName("skycity").getSpawnLocation()));
+//		IButton skyisland = new IButton("空岛", e -> e.getPlayer()
+//				.teleport(FormMenu.getInstance().getServer().getLevelByName("skyisland").getSpawnLocation()));
+//		IButton pve = new IButton("pve", e -> e.getPlayer()
+//				.teleport(FormMenu.getInstance().getServer().getLevelByName("pve").getSpawnLocation()));
+//		IButton rpg1 = new IButton("rpg1", e -> e.getPlayer()
+//				.teleport(FormMenu.getInstance().getServer().getLevelByName("rpg1").getSpawnLocation()));
+//		IButton zc = new IButton("zc", e -> e.getPlayer()
+//				.teleport(FormMenu.getInstance().getServer().getLevelByName("zc").getSpawnLocation()));
+//		IButton zhucheng = new IButton("zhucheng", e -> e.getPlayer()
+//				.teleport(FormMenu.getInstance().getServer().getLevelByName("zhucheng").getSpawnLocation()));
+//
+//		this.addButton(skycity);
+//		this.addButton(skyisland);
+//		this.addButton(pve);
+//		this.addButton(rpg1);
+//		this.addButton(zc);
+//		this.addButton(zhucheng);
+	}
 
-		IButton skycity = new IButton("空岛主城", e -> e.getPlayer()
-				.teleport(FormMenu.getInstance().getServer().getLevelByName("skycity").getSpawnLocation()));
-		IButton skyisland = new IButton("空岛", e -> e.getPlayer()
-				.teleport(FormMenu.getInstance().getServer().getLevelByName("skyisland").getSpawnLocation()));
-		IButton pve = new IButton("pve", e -> e.getPlayer()
-				.teleport(FormMenu.getInstance().getServer().getLevelByName("pve").getSpawnLocation()));
-		IButton rpg1 = new IButton("rpg1", e -> e.getPlayer()
-				.teleport(FormMenu.getInstance().getServer().getLevelByName("rpg1").getSpawnLocation()));
-		IButton zc = new IButton("zc", e -> e.getPlayer()
-				.teleport(FormMenu.getInstance().getServer().getLevelByName("zc").getSpawnLocation()));
-		IButton zhucheng = new IButton("zhucheng", e -> e.getPlayer()
-				.teleport(FormMenu.getInstance().getServer().getLevelByName("zhucheng").getSpawnLocation()));
+	private class WorldTPButtonListener implements ButtonListener {
+		private Level level;
 
-		this.addButton(skycity);
-		this.addButton(skyisland);
-		this.addButton(pve);
-		this.addButton(rpg1);
-		this.addButton(zc);
-		this.addButton(zhucheng);
+		WorldTPButtonListener(Level level) {
+			this.level = level;
+		}
+
+		@Override
+		public void onResponse(IFormResponseEvent e) {
+			e.getPlayer().teleport(level.getSpawnLocation());
+
+		}
+
 	}
 
 }
