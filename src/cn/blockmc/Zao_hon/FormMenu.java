@@ -20,8 +20,6 @@ public class FormMenu extends PluginBase {
 	public void onEnable() {
 		instance = this;
 
-		dataStorager = new FileStorager(this);
-
 		commandDispatcher = new CommandDispatcher(this, "menu");
 		commandDispatcher.addCommand(new OpenCommand(this));
 		
