@@ -2,7 +2,7 @@ package cn.blockmc.Zao_hon.event;
 
 
 import cn.blockmc.Zao_hon.FormMenu;
-import cn.blockmc.Zao_hon.form.form.MainForm;
+import cn.blockmc.Zao_hon.form.MainForm;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
 import cn.nukkit.event.player.PlayerInteractEvent;

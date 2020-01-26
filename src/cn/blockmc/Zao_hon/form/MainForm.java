@@ -1,4 +1,4 @@
-package cn.blockmc.Zao_hon.form.form;
+package cn.blockmc.Zao_hon.form;
 
 import cn.blockmc.Zao_hon.form.element.IButton;
 
