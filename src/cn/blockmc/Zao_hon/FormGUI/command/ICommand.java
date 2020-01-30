@@ -1,4 +1,4 @@
-package cn.blockmc.Zao_hon.command;
+package cn.blockmc.Zao_hon.FormGUI.command;
 
 import java.util.List;
 

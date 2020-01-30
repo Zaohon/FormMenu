@@ -1,5 +1,6 @@
-package cn.blockmc.Zao_hon.form;
+package cn.blockmc.Zao_hon.FormGUI.form;
 
+import cn.blockmc.Zao_hon.form.IFormWindow;
 import cn.blockmc.Zao_hon.form.element.IButton;
 
 public class MainForm extends IFormWindow {

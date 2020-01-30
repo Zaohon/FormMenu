@@ -1,9 +1,11 @@
-package cn.blockmc.Zao_hon.form;
+package cn.blockmc.Zao_hon.FormGUI.form;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
-import cn.blockmc.Zao_hon.FormMenu;
+import cn.blockmc.Zao_hon.FormGUI.FormMenu;
+import cn.blockmc.Zao_hon.form.IFormWindow;
 import cn.blockmc.Zao_hon.form.element.IButton;
 import cn.blockmc.Zao_hon.form.event.IFormButtonClickedEvent;
 import cn.blockmc.Zao_hon.form.listener.ButtonListener;
@@ -20,21 +22,22 @@ public class WorldTPForm extends IFormWindow {
 			this.put("zc", "zc");
 			this.put("zhucheng", "zhucheng");
 			this.put("rpg", "rpg1");
-			this.put("建筑模板区", "建筑模板区");
 		}
 	};
 
 	public WorldTPForm() {
-		super("世界传送菜单", "");
+		super("世界传送菜单", "世界传送");
 
-		world.entrySet().forEach(entry -> {
+		for (Entry<String, String> entry : world.entrySet()) {
 			if (!FormMenu.getInstance().getServer().isLevelLoaded(entry.getKey()))
-				FormMenu.getInstance().getServer().loadLevel(entry.getKey());
+				if (!FormMenu.getInstance().getServer().loadLevel(entry.getKey())) {
+					continue;
+				}
 			IButton button = new IButton(entry.getValue());
 			button.setListener(
 					new WorldTPButtonListener(FormMenu.getInstance().getServer().getLevelByName(entry.getKey())));
 			this.addButton(button);
-		});
+		}
 	}
 
 	private class WorldTPButtonListener implements ButtonListener {

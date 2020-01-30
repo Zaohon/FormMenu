@@ -1,11 +1,12 @@
-package cn.blockmc.Zao_hon;
+package cn.blockmc.Zao_hon.FormGUI;
 
-import cn.blockmc.Zao_hon.command.CommandDispatcher;
-import cn.blockmc.Zao_hon.command.OpenCommand;
-import cn.blockmc.Zao_hon.configuration.Config;
-import cn.blockmc.Zao_hon.event.EventListener;
-import cn.blockmc.Zao_hon.storage.DataStorager;
-import cn.blockmc.Zao_hon.storage.FileStorager;
+import cn.blockmc.Zao_hon.IFormListener;
+import cn.blockmc.Zao_hon.FormGUI.command.CommandDispatcher;
+import cn.blockmc.Zao_hon.FormGUI.command.OpenCommand;
+import cn.blockmc.Zao_hon.FormGUI.configuration.Config;
+import cn.blockmc.Zao_hon.FormGUI.event.EventListener;
+import cn.blockmc.Zao_hon.FormGUI.storage.DataStorager;
+import cn.blockmc.Zao_hon.FormGUI.storage.FileStorager;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.plugin.PluginBase;

@@ -1,9 +1,9 @@
-package cn.blockmc.Zao_hon.command;
+package cn.blockmc.Zao_hon.FormGUI.command;
 
 import java.util.List;
 import java.util.Map;
 
-import cn.blockmc.Zao_hon.FormMenu;
+import cn.blockmc.Zao_hon.FormGUI.FormMenu;
 import cn.nukkit.Player;
 import cn.nukkit.command.CommandSender;
 

@@ -1,4 +1,4 @@
-package cn.blockmc.Zao_hon.storage;
+package cn.blockmc.Zao_hon.FormGUI.storage;
 
 public abstract class DataStorager {
 	

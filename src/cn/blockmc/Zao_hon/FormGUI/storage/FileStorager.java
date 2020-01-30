@@ -1,11 +1,11 @@
-package cn.blockmc.Zao_hon.storage;
+package cn.blockmc.Zao_hon.FormGUI.storage;
 
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import cn.blockmc.Zao_hon.FormMenu;
+import cn.blockmc.Zao_hon.FormGUI.FormMenu;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.ConfigSection;
 

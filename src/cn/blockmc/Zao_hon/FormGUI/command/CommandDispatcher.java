@@ -1,9 +1,9 @@
-package cn.blockmc.Zao_hon.command;
+package cn.blockmc.Zao_hon.FormGUI.command;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import cn.blockmc.Zao_hon.FormMenu;
+import cn.blockmc.Zao_hon.FormGUI.FormMenu;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandExecutor;
 import cn.nukkit.command.CommandSender;

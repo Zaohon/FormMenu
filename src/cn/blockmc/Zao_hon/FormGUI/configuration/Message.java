@@ -1,4 +1,4 @@
-package cn.blockmc.Zao_hon.configuration;
+package cn.blockmc.Zao_hon.FormGUI.configuration;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -17,7 +17,7 @@ import java.util.Map.Entry;
 import java.util.MissingResourceException;
 import java.util.regex.Pattern;
 
-import cn.blockmc.Zao_hon.FormMenu;
+import cn.blockmc.Zao_hon.FormGUI.FormMenu;
 import cn.nukkit.Player;
 import cn.nukkit.command.CommandSender;
 
